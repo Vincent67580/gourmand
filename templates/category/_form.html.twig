@@ -1,0 +1,9 @@
+{# templates/category/_form.html.twig #}
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <div class="mt-3">
+        <button class="btn btn-success px-4">
+            {{ button_label|default('💾 Enregistrer') }}
+        </button>
+    </div>
+{{ form_end(form) }}

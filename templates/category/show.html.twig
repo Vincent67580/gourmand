@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de la catégorie - {{ category.name }}{% endblock %}
+
+{% block body %}
+<div class="container py-4" style="max-width: 800px;">
+
+    {# En-tête avec titre et bouton de retour #}
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h2 mb-0">📁 Catégorie : {{ category.name }}</h1>
+        <a href="{{ path('app_category_index') }}" class="btn btn-outline-secondary">
+            ⬅️ Retour à la liste
+        </a>
+    </div>
+
+    {# Carte d'information #}
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body p-4">
+            <table class="table table-borderless align-middle mb-0">
+                <tbody>
+                    <tr>
+                        <th scope="row" style="width: 120px;" class="text-muted">ID :</th>
+                        <td class="fw-bold">{{ category.id }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="text-muted">Nom :</th>
+                        <td>
+                            <span class="badge bg-secondary fs-6">{{ category.name }}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    {# Barre d'actions avec de vrais boutons #}
+    <div class="d-flex justify-content-between align-items-center">
+        <a href="{{ path('app_category_edit', {'id': category.id}) }}" class="btn btn-warning">
+            ✏️ Modifier la catégorie
+        </a>
+
+        {{ include('category/_delete_form.html.twig') }}
+    </div>
+
+</div>
+{% endblock %}

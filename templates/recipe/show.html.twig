@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ recipe.title }} - Gourmand{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <a href="{{ path('app_home') }}" class="btn btn-outline-secondary mb-3">← Retour à l'accueil</a>
+
+        <div class="card shadow-sm border-0 p-4 mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="badge bg-primary fs-6">{{ recipe.category.name ?? 'Non classé' }}</span>
+                <span class="text-muted fs-6">
+                    ⏱️ Préparation : {{ recipe.preparationTime }} min | 
+                    🔥 Cuisson : {{ recipe.cookingTime }} min | 
+                    🍽️ {{ recipe.servings }} part(s)
+                </span>
+            </div>
+
+            <h1 class="fw-bold mb-3">{{ recipe.title }}</h1>
+            <p class="lead text-muted">{{ recipe.description }}</p>
+
+            <hr class="my-4">
+
+            <h3 class="fw-bold mb-3">Preparation</h3>
+            <div class="p-3 bg-light rounded shadow-sm">
+                <p style="white-space: pre-line;" class="fs-5 text-dark mb-0">
+                    {{ recipe.instructions }}
+                </p>
+            </div>
+
+            {# Boutons réservés à l'admin connecté #}
+            {% if app.user %}
+                <div class="mt-4 pt-3 border-top d-flex gap-2">
+                    <a href="{{ path('app_recipe_edit', {'id': recipe.id}) }}" class="btn btn-warning">✏️ Modifier la recette</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

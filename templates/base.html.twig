@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Gourmand - Gestion de recettes{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍳</text></svg>">
+        
+        {# Bootstrap 5 CSS #}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        
+
+    </head>
+    <body class="bg-light">
+        {# Barre de navigation #}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="{{ path('app_home') }}">🍳 Gourmand</a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    {# Liens de gauche #}
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        {% if app.user %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_recipe_index') }}">Recettes (Admin)</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_category_index') }}">Catégories (Admin)</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+
+                    {# Liens de droite (Connexion / Déconnexion) #}
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+                        {% if app.user %}
+                            <li class="nav-item me-3">
+                                <span class="navbar-text text-white">
+                                    👤 {{ app.user.email }}
+                                </span>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-outline-light btn-sm" href="{{ path('app_logout') }}">Déconnexion</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="btn btn-light btn-sm text-primary fw-bold" href="{{ path('app_login') }}">Connexion</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        {# Contenu principal #}
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
+
+        {# Bootstrap JS #}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
