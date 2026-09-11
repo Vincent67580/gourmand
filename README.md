@@ -87,14 +87,7 @@ php bin/console doctrine:fixtures:load
 
 Pour lancer le serveur localement :
 
-### Option 1 : Via le CLI Symfony (Recommandé)
-
-```bash
-symfony server:start
-```
-Le site sera accessible à l'adresse : **`http://127.0.0.1:8000`**
-
-### Option 2 : Via le serveur intégré PHP
+###  Via le serveur intégré PHP
 
 ```bash
 php -S 127.0.0.1:8000 -t public
