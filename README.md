@@ -1,4 +1,4 @@
-# 🍳 Gourmand — Application Web de Partage de Recettes
+# 🍳 Gourmand - Application Web de Partage de Recettes
 
 Gourmand est une application web développée avec **Symfony 7** permettant aux utilisateurs de découvrir, publier et gérer des recettes de cuisine.
 
